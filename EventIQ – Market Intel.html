@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EventIQ – Market Intel</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#080c16;--side:#0a0f1d;--card:#0b1221;--line:#1a2236;--tx:#f1f4fb;--mu:#7a869f;--ac:#5b5fe8;--ac2:#8b93ff;--gr:#34d399;--or:#f59e0b;--rd:#f87171;--bl:#1a1e55;--gn:#0f3a2c;--on:#3d2a0c;--rn:#3d0f1f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.5 Inter,system-ui,-apple-system,Segoe UI,sans-serif;display:flex;min-height:100vh}
+aside{width:230px;background:var(--side);border-right:1px solid var(--line);padding:18px 14px;flex:none;position:sticky;top:0;height:100vh;overflow:auto}
+.logo{display:flex;gap:10px;align-items:center;margin-bottom:18px}.logo i{width:34px;height:34px;border-radius:9px;background:var(--ac);display:grid;place-items:center;font-style:normal;color:#fff}
+.logo b{display:block;font-size:15px}.logo small{color:var(--ac2);font-size:10px;letter-spacing:.06em}
+.plan{border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;color:var(--mu);font-size:12px;margin-bottom:18px}.plan u{text-decoration:none;color:var(--ac2)}
+nav button{all:unset;box-sizing:border-box;display:flex;width:100%;gap:10px;align-items:center;padding:9px 12px;border-radius:8px;color:var(--mu);cursor:pointer;margin-bottom:2px}
+nav button:hover{background:var(--card)}nav button.on{background:var(--bl);color:var(--tx)}nav button:focus-visible{outline:2px solid var(--ac2)}
+nav em{margin-left:auto;background:var(--ac);color:#fff;font-style:normal;font-size:10px;border-radius:9px;padding:1px 6px}
+main{flex:1;min-width:0}
+.top{display:flex;gap:10px;align-items:center;padding:12px 24px;border-bottom:1px solid var(--line)}
+.top input{flex:1;max-width:340px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 12px;color:var(--tx);font:inherit}
+.sp{flex:1}.seg{display:flex;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:2px}.seg span{padding:3px 9px;font-size:11px;color:var(--mu);border-radius:6px;cursor:pointer}.seg .on{background:var(--ac);color:#fff}
+.user{border:1px solid var(--line);border-radius:8px;padding:5px 10px;font-size:12px;background:var(--card)}
+#view{padding:24px;max-width:1200px}
+h1{font-size:20px;margin:0}.sub{color:var(--mu);margin:2px 0 18px;font-size:12.5px}
+.hd{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+select{background:#2f343f;color:#e5e7eb;border:1px solid #454b59;border-radius:5px;padding:4px 8px;font:inherit;font-size:12px}
+.g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:16px}
+.g2{display:grid;grid-template-columns:1.9fr 1fr;gap:14px;margin-bottom:16px}.g2b{display:grid;grid-template-columns:1.1fr 1fr;gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.kpi{border-radius:14px;padding:16px;border:1px solid var(--line)}
+.kpi .r{display:flex;justify-content:space-between;align-items:center}.ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:rgba(255,255,255,.07)}
+.kpi b{display:block;font-size:24px;margin-top:14px}.kpi small{color:var(--mu)}.up{color:var(--gr);font-size:11px}
+.card h3{margin:0;font-size:13.5px}.card p{margin:2px 0 10px;color:var(--mu);font-size:11.5px}
+.lg{display:flex;justify-content:space-between;font-size:12px;color:var(--mu);margin:5px 0}.lg i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px}.lg b{color:var(--tx)}
+.bar{height:6px;background:var(--line);border-radius:4px;overflow:hidden;margin:4px 0 12px}.bar div{height:100%;border-radius:4px}
+.row{display:flex;justify-content:space-between;font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:13px}th{color:var(--mu);font-weight:500;text-align:left;padding:8px;border-bottom:1px solid var(--line)}td{padding:10px 8px;border-bottom:1px solid var(--line)}
+.tbl{overflow-x:auto}
+.tag{padding:2px 8px;border-radius:10px;font-size:11px;background:var(--bl)}.tag.f{background:var(--gn);color:var(--gr)}.tag.s{background:var(--on);color:var(--or)}
+.al{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.al:last-child{border:0}.dot{width:9px;height:9px;border-radius:50%;margin-top:6px;flex:none}
+.in{width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:8px;padding:9px 10px;font:inherit}
+label{display:block;font-size:12px;color:var(--mu);margin:12px 0 4px}
+.btn{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:9px 16px;font:inherit;font-weight:600;cursor:pointer}
+.chat{height:340px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding-bottom:8px}
+.m{max-width:80%;padding:9px 12px;border-radius:12px;background:var(--bg);border:1px solid var(--line)}.m.u{align-self:flex-end;background:var(--ac);color:#fff;border:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.chips button{background:var(--bl);color:var(--tx);border:1px solid var(--line);border-radius:14px;padding:5px 11px;font:inherit;font-size:12px;cursor:pointer}
+.big{font-size:30px;font-weight:700}
+svg{display:block;max-width:100%}
+@media(max-width:860px){body{flex-direction:column}aside{width:100%;height:auto;position:static;display:flex;flex-wrap:wrap;gap:10px;align-items:center}.plan{display:none}nav{display:flex;overflow-x:auto;gap:4px;width:100%}nav button{white-space:nowrap;width:auto}.g2,.g2b{grid-template-columns:1fr}#view{padding:16px}.top{padding:10px 16px}}
+.kpi{color:#aeb6cc}.kpi b{font-size:22px;color:#fff}
+.kpi.b{background:linear-gradient(135deg,#1b1f5c,#11154a);border-color:#2a3090}.kpi.g{background:linear-gradient(135deg,#0e3b2d,#0a2a22);border-color:#14583f}.kpi.o{background:linear-gradient(135deg,#3b2a0c,#2a1d09);border-color:#5e410e}.kpi.r{background:linear-gradient(135deg,#4a0f27,#30091c);border-color:#6e1637}
+.kpi.b .ic{background:#2f33b0;color:#c9ccff}.kpi.g .ic{background:#12634a;color:#6ee7b7}.kpi.o .ic{background:#6b4a0c;color:#fbbf24}.kpi.r .ic{background:#7d1b3f;color:#fda4af}
+nav button.on{background:#171b4a;box-shadow:inset 0 0 0 1px #262c75;color:#a5acff}nav button.on::after{content:"›";margin-left:auto;color:var(--mu)}
+.plan{background:#12163c;border-color:#242a6e}
+nav em{border-radius:50%;width:16px;height:16px;padding:0;display:grid;place-items:center}
+.top input{background:#0d1426}.seg .on{background:#4f46e5}
+.bell{width:32px;height:32px;border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;background:var(--card);position:relative}.bell::after{content:"";position:absolute;top:5px;right:5px;width:6px;height:6px;border-radius:50%;background:#6366f1}
+.user{display:flex;gap:8px;align-items:center}.user i{width:22px;height:22px;border-radius:50%;background:#3b3fc9;display:grid;place-items:center;font:600 9px Inter,sans-serif;font-style:normal;color:#fff}.user small{background:#1b2236;border-radius:4px;padding:0 5px;color:var(--mu);font-size:10px}
+</style>
+</head>
+<body>
+<aside>
+ <div class="logo"><i>⚡</i><div><b>EventIQ</b><small>MARKET INTEL</small></div></div>
+ <div class="plan"><span>⛉ Free</span><u>Passer Pro</u></div>
+ <nav id="nav"></nav>
+</aside>
+<main>
+ <div class="top"><input id="q" placeholder="Rechercher données, prestataires, régions…" aria-label="Recherche"><span class="sp"></span>
+  <div class="seg"><span class="on">FR</span><span>AR</span><span>EN</span></div><div class="bell" aria-label="Notifications"><span style="filter:grayscale(1) brightness(1.5);font-size:13px">🔔</span></div><div class="user"><i>DF</i>Demo <small>Free</small></div></div>
+ <div id="view"></div>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+const pages=[["market","Vue Marché","▤"],["regions","Régions","◫"],["providers","Prestataires","☺"],["bench","Benchmarks Prix","↗"],["sim","Simulateur","▦"],["ai","AI Assistant","✦"],["alerts","Alertes","🔔",4]];
+const fmt=n=>n.toLocaleString("fr-FR").replace(/\u202f/g,".").replace(/\u00a0/g,".");
+const regions=[["Casablanca",1840,9.8],["Marrakech",1120,14.2],["Rabat",760,7.1],["Tanger",540,11.5],["Agadir",430,12.9],["Fès",310,5.4]];
+const provs=[["Atlas Prestige Events","Mariage","Casablanca","Formel",4.8,"420.000"],["Dar Sahra Traiteur","Mariage","Marrakech","Semi-formel",4.6,"260.000"],["Maghreb Conferences","MICE","Rabat","Formel",4.7,"510.000"],["Scène & Lumière","Public & Culturel","Tanger","Formel",4.5,"190.000"],["Zellige Décor","Corporate","Agadir","Semi-formel",4.3,"95.000"],["Riad Events Co.","Mariage","Fès","Semi-formel",4.4,"210.000"]];
+const bench=[["Traiteur (par personne)",450,380,620],["Salle de réception",60000,35000,120000],["DJ / Orchestre",12000,6000,35000],["Décoration",25000,10000,80000],["Photo & vidéo",15000,7000,40000],["Location sono & lumière",9000,4000,22000]];
+const alerts=[["Hausse des prix traiteur de +6% à Marrakech","Il y a 2 h",0],["Nouveau salon MICE annoncé à Casablanca (nov. 2026)","Hier",1],["12 nouveaux prestataires informels détectés à Agadir","Il y a 2 j",2],["Le taux d'informalité baisse de 1 pt dans le segment Corporate","Il y a 4 j",1]];
+const col=["var(--rd)","var(--gr)","var(--or)"];
+const seg=[["Mariage",44,"#818cf8"],["Corporate",24,"#34d399"],["MICE",16,"#f59e0b"],["Public & Culturel",16,"#f87171"]];
+
+function area(){const d=[7,3.4,5.4,8.2,9.6,10.6,11.4],W=640,H=240,p=34,x=i=>p+i*(W-p-10)/6,y=v=>H-26-v*(H-50)/12;
+ let P=d.map((v,i)=>[x(i),y(v)]),l="M"+P[0];for(let i=0;i<6;i++){const a=P[i],b=P[i+1],m=(a[0]+b[0])/2;l+=` C${m},${a[1]} ${m},${b[1]} ${b[0]},${b[1]}`}
+ let g="";[0,3,6,9,12].forEach(v=>g+=`<line x1="${p}" x2="${W-10}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" opacity=".5"/><text x="${p-8}" y="${y(v)+4}" fill="var(--mu)" font-size="10" text-anchor="end">${v}</text>`);
+ d.forEach((_,i)=>g+=`<text x="${x(i)}" y="${H-6}" fill="var(--mu)" font-size="10" text-anchor="middle">${2019+i}</text>`);
+ return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Évolution de la taille du marché 2019-2025"><defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6366f1" stop-opacity=".3"/><stop offset="1" stop-color="#6366f1" stop-opacity="0"/></linearGradient></defs>${g}<path d="${l} L${x(6)},${y(0)} L${x(0)},${y(0)}Z" fill="url(#ag)"/><path d="${l}" fill="none" stroke="#6366f1" stroke-width="2.5"/></svg>`}
+function donut(){let o=0,r=58,c=2*Math.PI*r;return `<svg viewBox="0 0 160 160" width="190" style="margin:0 auto" role="img" aria-label="Répartition par segment">`+[0,3,2,1].map(i=>seg[i]).map(s=>{const L=c*s[1]/100,e=`<circle cx="80" cy="80" r="${r}" fill="none" stroke="${s[2]}" stroke-width="24" stroke-dasharray="${L-3} ${c-L+3}" stroke-dashoffset="${-o}" transform="rotate(-100 80 80)"/>`;o+=L;return e}).join("")+"</svg>"}
+function kpi(bg,ic,v,t,s,tr){return `<div class="kpi ${bg}"><div class="r"><span class="ic">${ic}</span><span class="up">${tr}</span></div><b>${v}</b><div>${t}</div><small>${s}</small></div>`}
+
+const V={
+market:()=>`<div class="hd"><div><h1>Vue d'ensemble du marché</h1><div class="sub">Maroc — Données au 26 mai 2026</div></div>
+<div><select aria-label="Région"><option>Toutes régions</option>${regions.map(r=>`<option>${r[0]}</option>`)}</select> <select aria-label="Segment"><option>Tous segments</option>${seg.map(s=>`<option>${s[0]}</option>`)}</select></div></div>
+<div class="g4">${kpi("b","$","11.4 Mrd MAD","Taille du marché","Estimé 2025","↗ +11.2% YoY")}${kpi("g","☺","4.820","Prestataires actifs","Formels + semi-formels","↗ +8.4% vs 2024")}${kpi("o","⚠","62%","Taux d'informalité","Secteur non déclaré","↘ -3pt vs 2023")}${kpi("r","〜","185.000 MAD","Budget moyen événement","Toutes catégories","↗ +14.3% YoY")}</div>
+<div class="g2"><div class="card"><h3>Évolution taille de marché</h3><p>En milliards MAD, 2019–2025</p>${area()}</div>
+<div class="card"><h3>Répartition par segment</h3><p>Part de marché (%)</p>${donut()}<div style="margin-top:10px">${seg.map(s=>`<div class="lg"><span><i style="background:${s[2]}"></i>${s[0]}</span><b>${s[1]}%</b></div>`).join("")}</div></div></div>
+<div class="g2b"><div class="card"><h3>Budget moyen par segment</h3><p>MAD / événement</p>${[["MICE",480],["Mariage",320],["Corporate",210],["Public & Culturel",140]].map((b,i)=>`<div class="row"><span>${b[0]}</span><b>${b[1]}.000 MAD</b></div><div class="bar"><div style="width:${b[1]/480*100}%;background:${seg[[2,0,1,3][i]][2]}"></div></div>`).join("")}</div>
+<div class="card"><h3>Top régions — Croissance</h3><p>Nombre d'acteurs & taux de croissance</p>${regions.slice(0,4).map(r=>`<div class="row"><span>${r[0]}</span><span><b class="up">+${r[2]}%</b> &nbsp; <span style="color:var(--mu)">${fmt(r[1])} act.</span></span></div><div class="bar"><div style="width:${r[1]/1840*100}%;background:var(--ac)"></div></div>`).join("")}</div></div>`,
+
+regions:()=>`<h1>Régions</h1><div class="sub">Acteurs, croissance et budget moyen par région</div><div class="g4">${regions.map(r=>`<div class="card"><h3>${r[0]}</h3><div class="big">${fmt(r[1])}</div><p>prestataires actifs</p><span class="up">↗ +${r[2]}% de croissance</span><div class="bar" style="margin-top:12px"><div style="width:${r[1]/1840*100}%;background:var(--ac)"></div></div></div>`).join("")}</div>`,
+
+providers:()=>`<h1>Prestataires</h1><div class="sub">Annuaire des acteurs de l'événementiel</div><div class="card"><div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px"><input class="in" id="pf" placeholder="Filtrer par nom, segment ou ville…" style="max-width:320px" aria-label="Filtrer"></div><div class="tbl"><table><thead><tr><th>Nom</th><th>Segment</th><th>Ville</th><th>Statut</th><th>Note</th><th>Budget moyen (MAD)</th></tr></thead><tbody id="pt"></tbody></table></div></div>`,
+
+bench:()=>`<h1>Benchmarks Prix</h1><div class="sub">Fourchettes de prix observées sur le marché (MAD)</div><div class="card">${bench.map(b=>{const p=v=>(v-0)/b[3]*100;return `<div class="row"><b>${b[0]}</b><span style="color:var(--mu)">${fmt(b[2])} – ${fmt(b[3])} · médiane <b style="color:var(--tx)">${fmt(b[1])}</b></span></div><div class="bar" style="position:relative;height:10px"><div style="position:absolute;left:${p(b[2])}%;width:${p(b[3])-p(b[2])}%;background:var(--ac);opacity:.5"></div><div style="position:absolute;left:${p(b[1])}%;width:3px;background:var(--or)"></div></div>`}).join("")}</div>`,
+
+sim:()=>`<h1>Simulateur</h1><div class="sub">Estimez le budget d'un événement</div><div class="g2b"><div class="card"><label>Segment</label><select class="in" id="s1">${seg.map(s=>`<option>${s[0]}</option>`)}</select><label>Région</label><select class="in" id="s2">${regions.map(r=>`<option>${r[0]}</option>`)}</select><label>Nombre d'invités : <b id="gv">200</b></label><input type="range" id="s3" min="20" max="1000" step="10" value="200" style="width:100%"><label>Gamme</label><select class="in" id="s4"><option value=".8">Essentielle</option><option value="1" selected>Standard</option><option value="1.5">Premium</option></select></div>
+<div class="card"><h3>Budget estimé</h3><p>Basé sur les benchmarks du marché</p><div class="big" id="so">—</div><div class="sub" id="sr"></div><div id="sd"></div></div></div>`,
+
+ai:()=>`<h1>AI Assistant</h1><div class="sub">Posez vos questions sur le marché événementiel marocain</div><div class="card"><div class="chat" id="ch"><div class="m">Bonjour ! Je peux analyser les tendances, les prix et les régions. Que voulez-vous savoir ?</div></div><div class="chips"><button>Quelle région croît le plus vite ?</button><button>Budget moyen d'un mariage ?</button><button>Part de l'informel ?</button></div><div style="display:flex;gap:8px"><input class="in" id="ci" placeholder="Votre question…" aria-label="Question"><button class="btn" id="cs">Envoyer</button></div></div>`,
+
+alerts:()=>`<h1>Alertes</h1><div class="sub">4 nouvelles alertes de marché</div><div class="card">${alerts.map(a=>`<div class="al"><span class="dot" style="background:${col[a[2]]}"></span><div><div>${a[0]}</div><small style="color:var(--mu)">${a[1]}</small></div></div>`).join("")}</div>`
+};
+const H={
+providers(){const r=()=>{const f=$("#pf").value.toLowerCase();$("#pt").innerHTML=provs.filter(p=>p.join(" ").toLowerCase().includes(f)).map(p=>`<tr><td><b>${p[0]}</b></td><td><span class="tag">${p[1]}</span></td><td>${p[2]}</td><td><span class="tag ${p[3]=="Formel"?"f":"s"}">${p[3]}</span></td><td>★ ${p[4]}</td><td>${p[5]}</td></tr>`).join("")||`<tr><td colspan="6" style="color:var(--mu)">Aucun prestataire trouvé. Modifiez votre filtre.</td></tr>`};$("#pf").oninput=r;r()},
+sim(){const base={"Mariage":1500,"Corporate":1100,"MICE":2400,"Public & Culturel":700},rm={Casablanca:1.1,Marrakech:1.15,Rabat:1.05,Tanger:1,Agadir:.95,"Fès":.9};
+ const r=()=>{const n=+$("#s3").value,t=base[$("#s1").value]*n*rm[$("#s2").value]*$("#s4").value;$("#gv").textContent=n;$("#so").textContent=fmt(Math.round(t/1000)*1000)+" MAD";$("#sr").textContent="Fourchette : "+fmt(Math.round(t*.85/1000)*1000)+" – "+fmt(Math.round(t*1.15/1000)*1000)+" MAD";
+ $("#sd").innerHTML=[["Salle & logistique",.35],["Traiteur",.35],["Animation & décor",.2],["Autres",.1]].map(x=>`<div class="row"><span>${x[0]}</span><b>${fmt(Math.round(t*x[1]/1000)*1000)}</b></div><div class="bar"><div style="width:${x[1]*100}%;background:var(--ac)"></div></div>`).join("")};
+ document.querySelectorAll("#view select,#s3").forEach(e=>e.oninput=r);r()},
+ai(){const A={"région":"Agadir (+12.9%) et Marrakech (+14.2%) croissent le plus vite ; Casablanca reste la plus grande avec 1.840 acteurs.","mariage":"Le budget moyen d'un mariage est d'environ 320.000 MAD, avec 44% de part de marché.","informel":"Le taux d'informalité est de 62%, en baisse de 3 points par rapport à 2023."};
+ const send=t=>{if(!t.trim())return;const c=$("#ch");c.insertAdjacentHTML("beforeend",`<div class="m u"></div>`);c.lastChild.textContent=t;const k=Object.keys(A).find(k=>t.toLowerCase().includes(k));c.insertAdjacentHTML("beforeend",`<div class="m">${k?A[k]:"Je n'ai pas encore cette donnée. Essayez : région, mariage ou informel."}</div>`);c.scrollTop=1e9;$("#ci").value=""};
+ $("#cs").onclick=()=>send($("#ci").value);$("#ci").onkeydown=e=>e.key=="Enter"&&send(e.target.value);document.querySelectorAll(".chips button").forEach(b=>b.onclick=()=>send(b.textContent))}
+};
+function go(id){let s="market";try{}catch(e){}$("#view").innerHTML=V[id]();(H[id]||(()=>{}))();document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.id==id));try{sessionStorage.setItem("p",id)}catch(e){}}
+$("#nav").innerHTML=pages.map(p=>`<button data-id="${p[0]}"><span>${p[2]}</span>${p[1]}${p[3]?`<em>${p[3]}</em>`:""}</button>`).join("");
+document.querySelectorAll("#nav button").forEach(b=>b.onclick=()=>go(b.dataset.id));
+let st="market";try{st=sessionStorage.getItem("p")||"market"}catch(e){}go(V[st]?st:"market");
+</script>
+</body>
+</html>
